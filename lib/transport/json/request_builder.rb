@@ -22,8 +22,8 @@ module Transport
 
       def set_headers
         headers = @options[:headers] || { }
-        headers.merge! "Accept" => "application/json"
-        headers.merge! "Content-Type" => "application/json" if @options[:body]
+        headers["Accept"] ||= "application/json"
+        headers["Content-Type"] ||= "application/json" if @options[:body]
         @options[:headers] = headers
       end
 

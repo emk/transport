@@ -42,6 +42,21 @@ describe Transport::JSON::RequestBuilder do
       @request_builder.perform
     end
 
+    it "should allow default MIME types to be overriden" do
+      Transport::HTTP::RequestBuilder.should_receive(:new).with(
+        @http_method,
+        @url,
+        @options.merge(
+          :headers => { "Accept" => "application/x-quints+json", "Content-Type" => "application/x-quints+json" },
+          :body => "{\"test\":\"body\"}"
+        )
+      ).and_return(@http_request_builder)
+
+      @request_builder.options.merge!(:body => { "test" => "body" },
+                                      :headers => { "Accept" => "application/x-quints+json", "Content-Type" => "application/x-quints+json" })
+      @request_builder.perform      
+    end
+
     it "should convert the parameters to json if requested" do
       Transport::HTTP::RequestBuilder.should_receive(:new).with(
         @http_method,
