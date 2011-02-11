@@ -1,12 +1,9 @@
 require 'rubygems'
+require 'bundler'
+Bundler.setup(:default, :development)
 
-gem 'rspec'
-require 'rspec'
 require 'rspec/core/rake_task'
-
-gem 'reek'
 require 'reek/rake/task'
-
 require 'rake/rdoctask'
 
 task :default => :spec

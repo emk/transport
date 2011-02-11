@@ -23,6 +23,8 @@ Gem::Specification.new do |specification|
 
   specification.requirements << "The 'json' gem if ruby version 1.8.x is used."
 
+  specification.add_dependency "json", ">= 1.4.6"
   specification.add_development_dependency "rspec", ">= 2"
   specification.add_development_dependency "reek", ">= 1.2"
+  specification.add_development_dependency "rake", ">= 0.8.7"
 end
